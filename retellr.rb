@@ -1,3 +1,5 @@
+require 'pry'
+
 prompt = 'Who are you in this convo? '
 print prompt
 user = STDIN.gets.chomp
@@ -20,22 +22,20 @@ me = [
 ]
 
 def random_bullshit(bullshit)
-  puts bullshit.sample if rand > 0.6
+  bullshit.sample if rand > 0.6
 end
 
 def random_me(me)
-  puts me.sample
+  me.sample
 end
 
 text.each do |line|
   line = line[20..-1]
   name, msg = line.split(/:/)
   if name == user
-    puts "#{random_me(me)} #{msg}"
-    random_bullshit(bullshit)
+    puts "#{random_me(me)} #{msg} #{random_bullshit(bullshit)}"
   else
-    puts "#{name} was all like #{msg}"
-    random_bullshit(bullshit)
+    puts "#{name} was all like #{msg} #{random_bullshit(bullshit)}"
   end
 end
 
